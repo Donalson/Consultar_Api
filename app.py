@@ -24,7 +24,7 @@ while len(verificador) < 6:
 #Creacion de la ruta principal del sitio web y texto de prueba
 @app.route('/')
 def Inicio():
-    return render_template('index.html')
+    return render_template('index.html', lista = verificador)
 
 #Inializacion del sitio web para correr(modo debug encendido para detectar cambios)
 if __name__ == '__main__':

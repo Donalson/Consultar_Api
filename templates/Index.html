@@ -9,28 +9,12 @@
         <h5 class="text-white text-center p-4">Pokedex Donalson</h5>
     </div>
 
-    <div class="col-4">
-
+    {% for id in lista %}
+    <div class="col-4 pb-3"> 
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{id}}.png" class="card-img-top" alt="...">
+        </div>
     </div>
-
-    <div class="col-4">
-        
-    </div>
-
-    <div class="col-4">
-        
-    </div>
-
-    <div class="col-4">
-        
-    </div>
-
-    <div class="col-4">
-        
-    </div>
-    
-    <div class="col-4">
-        
-    </div>
+    {% endfor %}
 </div>
 {% endblock %}
