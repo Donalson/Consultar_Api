@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<br><br><br><br><br>
+
+<div class="row bg-dark mx-4">
+
+    <div class="col-12">
+        <h5 class="text-white text-center p-4">Pokedex Donalson</h5>
+    </div>
+
+    {% for e in lista %}
+    <div class="col-sm-6 col-md-2 pb-3"> 
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{e['ID']}}.png" class="card-img-top" alt="...">
+            <h1 id="{{e['ID']}}" class="pokemon text-center text-black">{{ e['Nombre'] }}</h1>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<script>
+    const ids = [...document.querySelectorAll('.pokemon')].map(el => el.id);
+
+    function EscribirNombre(id,Nombre){
+        document.getElementById(id).innerHTML = Nombre
+    }
+
+    function ObtenerPokemon(id) {
+        fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(function (response) {
+            response.json()
+            .then(function (pokemon) {
+                EscribirNombre(id,pokemon.name)
+                //console.log(pokemon);  
+            })
+        })
+    }
+
+    /*function ObtenerNombre(id){
+        var nombre = []
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`).then(function (res) {
+            let temporal = res.data
+            nombre.push(temporal.name)
+        }).catch(function (error) {
+            console.log(error);
+        });
+        return nombre
+    }*/
+
+    /*window.onload = function (){
+        ids.forEach(e => ObtenerPokemon(e))
+
+        var Nombres = []
+        for(var i = 0; i <= 5; i++){
+            Nombres.push(ObtenerNombre(ids[i]))
+            var Nombre = ObtenerNombre(ids[i]);
+            var es = Nombre[0]
+            EscribirNombre(ids[i],Nombre[0])
+        }
+    }*/
+    
+</script>
+{% endblock %}

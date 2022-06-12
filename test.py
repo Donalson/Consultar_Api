@@ -1,6 +1,6 @@
 from numpy import random
 import requests 
-
+""""
 #Se crea una lista para guardar los 6 identificadores de los pokemons
 verificador = []
 #Se añade un valor inicial a la lista
@@ -18,11 +18,17 @@ while len(verificador) < 6:
         verificador.append(aleatorio)
 
 pokemons = []
-for i in range(0,5):
+for i in range(0,6):
     url = 'https://pokeapi.co/api/v2/pokemon/'+str(verificador[i])
     temp = requests.get(url)
     temp = temp.json()
-    pokemons.append(temp)
+    pokemons.append({'ID':verificador[i],'Nombre':temp['name']})
+
+print(pokemons[0]['Nombre'])
 
 #print('name' in pokemons[0])
-#print(pokemons[0].name)
+#print(pokemons[0]['name'])
+"""
+
+test = random.randint(252,386)
+print(test)
