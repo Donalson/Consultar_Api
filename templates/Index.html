@@ -4,10 +4,10 @@
 
 <br><br>
 <div class="contenedor">
+    <div class="card-panel lime center-align">
+        <h5>DATOS DE LA POKéDEX ESMERALDA (TERCERA GENERACIóN)</h5>
+    </div>
     <div class="row">
-        <div class="card-panel lime center-align">
-            <h5>DATOS DE LA POKéDEX ESMERALDA (TERCERA GENERACIóN)</h5>
-        </div>
         {% for e in lista %}
         <div class="col s12 m6 l4">
             <div class="card teal lighten-5">
@@ -17,6 +17,10 @@
                             <span class="card-title">No.{{e['ID']}} {{ e['Nombre'].upper() }}</span>
                             <p>Alt. {{ e['Alt'] }} m</p>
                             <p>Peso {{ e['Peso'] }} kg</p>
+                            <p>Tipos :</p>
+                            {% for t in e['Tipos'] %}
+                                <img src="{{ tipos[t['type']['name']] }}">
+                            {% endfor %}
                         </div>
                         <div class="col s6">
                             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{e['ID']}}.png" class="fotoPokemon">
